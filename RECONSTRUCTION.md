@@ -28,7 +28,7 @@
 ## 2. Project Structure
 
 ```
-catchapaw/
+school-sick-yadika/
 ├── frontend/
 │   ├── index.html
 │   ├── game.css
@@ -135,12 +135,12 @@ const GAME_CONFIG = {
 
 ```js
 // localStorage keys
-'catch-a-paw-music'  // 'on' | 'off'
-'catch-a-paw-sfx'    // 'on' | 'off'
-'catch-a-paw-sound'  // legacy
+'school-sick-yadika-music'  // 'on' | 'off'
+'school-sick-yadika-sfx'    // 'on' | 'off'
+'school-sick-yadika-sound'  // legacy
 ```
 
-Music: `/static/assets/music/catch_a_paw_music.m4a` (870KB)
+Music: `/static/assets/music/school-sick-yadika-theme.m4a` (870KB)
 
 ---
 
@@ -358,7 +358,7 @@ static/
 │   │   ├── cat_idle.svg
 │   │   └── cat_dead.svg
 │   └── music/
-│       └── catch_a_paw_music.m4a
+│       └── school-sick-yadika-theme.m4a
 └── fonts/
     └── inter-800.ttf
 ```

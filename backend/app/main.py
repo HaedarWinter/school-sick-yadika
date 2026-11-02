@@ -13,7 +13,7 @@ async def lifespan(app: FastAPI):
         await conn.run_sync(Base.metadata.create_all)
     yield
 
-app = FastAPI(title="Catch-a-Paw API", lifespan=lifespan)
+app = FastAPI(title="School Sick In Yadika Soreang API", lifespan=lifespan)
 
 @app.middleware("http")
 async def block_llm_probes(request: Request, call_next):

@@ -3,7 +3,7 @@
     "mode": "connect"
   },
   "start_url": {
-    "url": "https://catchapaw.vercel.app"
+    "url": "https://school-sick-yadika.vercel.app"
   },
   "actions": [
     { "action": "navigate" },

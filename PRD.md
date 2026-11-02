@@ -7,7 +7,7 @@ Extend the existing single-track background music system into a small, user-cont
 
 ## Current State
 - `audio.js` manages one `<Audio>` element (`music`) with `loop=true`
-- Source: `/static/assets/music/catch_a_paw_music.mp3` (fallback `.m4a`)
+- Source: `/static/assets/music/school-sick-yadika-theme.m4a` (fallback `.mp3`)
 - Volume controlled via `MUSIC_VOLUME` (0.30) and `PAUSED_MUSIC_VOLUME` (0.15)
 - Persisted preference: `school-sick-yadika-music` in localStorage
 
