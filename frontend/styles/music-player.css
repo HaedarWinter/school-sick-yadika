@@ -1,0 +1,464 @@
+/* =============================
+   MUSIC PLAYER — Pixel-art style
+   ============================= */
+
+:root {
+  --brown-light: #6B3E3B;
+}
+
+.music-player {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 16px;
+  background: var(--cream);
+  border: 4px solid var(--brown);
+  box-shadow: 0 5px 0 var(--brown);
+  font-family: 'Pixelify Sans', 'Press Start 2P', monospace;
+}
+
+@media (min-width: 720px) {
+  .music-player {
+    grid-template-columns: 340px 1fr;
+    align-items: start;
+  }
+}
+
+/* ---- Header ---- */
+.music-player__header {
+  grid-column: 1 / -1;
+  margin: -16px -16px 0;
+  padding: 12px 16px;
+  background: var(--sky);
+  border-bottom: 4px solid var(--brown);
+  border-radius: 0;
+}
+
+.music-player__header h3 {
+  margin: 0;
+  color: var(--brown);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---- LEFT COLUMN (Now Playing + Play/Pause) ---- */
+.music-player__left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.music-player__now-playing {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  padding: 12px;
+  background: var(--brown);
+  border: 4px solid var(--brown);
+  box-shadow: 0 5px 0 var(--brown);
+}
+
+.music-player__cover-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-player__cover {
+  width: 96px;
+  height: 96px;
+  border: 4px solid var(--cream);
+  background: var(--brown-light);
+  image-rendering: pixelated;
+  object-fit: cover;
+}
+
+.music-player__cover.is-missing {
+  display: none;
+}
+
+.music-player__cover.is-missing + .music-player__placeholder,
+.music-player__cover:not([src]) + .music-player__placeholder {
+  display: flex !important;
+}
+
+.music-player__placeholder {
+  display: none;
+  width: 96px;
+  height: 96px;
+  align-items: center;
+  justify-content: center;
+  background: var(--brown-light);
+  border: 4px solid var(--cream);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--cream);
+  text-align: center;
+  line-height: 1.2;
+  image-rendering: pixelated;
+}
+
+.music-player__now-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  color: var(--cream);
+  min-width: 0;
+}
+
+.music-player__label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.music-player__title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+/* Equalizer */
+.music-player__equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 28px;
+}
+
+.music-player__equalizer span {
+  flex: 1;
+  background: var(--pink);
+  border-radius: 0;
+  animation: eq-bars 0.8s steps(1) infinite;
+  animation-play-state: paused;
+  transform-origin: bottom;
+}
+
+.music-player__equalizer span:nth-child(1) { animation-delay: 0ms; height: 10%; }
+.music-player__equalizer span:nth-child(2) { animation-delay: 50ms; height: 35%; }
+.music-player__equalizer span:nth-child(3) { animation-delay: 100ms; height: 60%; }
+.music-player__equalizer span:nth-child(4) { animation-delay: 150ms; height: 25%; }
+.music-player__equalizer span:nth-child(5) { animation-delay: 200ms; height: 80%; }
+.music-player__equalizer span:nth-child(6) { animation-delay: 250ms; height: 45%; }
+.music-player__equalizer span:nth-child(7) { animation-delay: 300ms; height: 90%; }
+.music-player__equalizer span:nth-child(8) { animation-delay: 350ms; height: 30%; }
+.music-player__equalizer span:nth-child(9) { animation-delay: 400ms; height: 70%; }
+.music-player__equalizer span:nth-child(10) { animation-delay: 450ms; height: 55%; }
+
+.music-player__equalizer.is-playing span {
+  animation-play-state: running;
+}
+
+@keyframes eq-bars {
+  0%, 100% { height: 10%; }
+  12.5% { height: 35%; }
+  25% { height: 60%; }
+  37.5% { height: 25%; }
+  50% { height: 80%; }
+  62.5% { height: 45%; }
+  75% { height: 90%; }
+  87.5% { height: 30%; }
+}
+
+/* Play/Pause button */
+.music-player__play-pause {
+  width: 100%;
+  padding: 14px 16px;
+  border: 4px solid var(--brown);
+  background: var(--yellow);
+  color: var(--brown);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 5px 0 var(--brown);
+  transition: transform 60ms linear, box-shadow 60ms linear;
+}
+
+.music-player__play-pause:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 var(--brown);
+}
+
+.music-player__play-pause:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 var(--brown);
+}
+
+/* ---- RIGHT COLUMN (Track List + Volume) ---- */
+.music-player__right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.music-player__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.music-player__section > .music-player__label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+  color: var(--brown);
+}
+
+/* Track List */
+.music-player__track-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.music-player__track-button {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 4px solid var(--brown);
+  background: var(--cream-light);
+  color: var(--brown);
+  font-family: 'Pixelify Sans', 'Press Start 2P', monospace;
+  font-size: 12px;
+  text-align: left;
+  box-shadow: 0 4px 0 var(--brown);
+  transition: transform 60ms linear, box-shadow 60ms linear, background 60ms;
+}
+
+.music-player__track-button:hover {
+  background: var(--cream);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--brown);
+}
+
+.music-player__track-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--brown);
+}
+
+.music-player__track-button.is-active {
+  background: var(--pink);
+  color: var(--brown);
+}
+
+.music-player__track-marker {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--brown);
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.music-player__track-button.is-active .music-player__track-marker {
+  background: var(--cream);
+  box-shadow: inset 0 0 0 3px var(--brown);
+}
+
+.music-player__track-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.music-player__track-copy strong {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.music-player__track-copy small {
+  font-family: 'Pixelify Sans', monospace;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.music-player__active-tag {
+  padding: 2px 8px;
+  border: 2px solid var(--brown);
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Pink accent for main theme */
+.music-player__track-button[data-track-id="main-theme"]:hover,
+.music-player__track-button[data-track-id="main-theme"].is-active {
+  border-color: var(--pink);
+}
+
+/* Sky accent for custom song */
+.music-player__track-button[data-track-id="custom-song"]:hover,
+.music-player__track-button[data-track-id="custom-song"].is-active {
+  border-color: var(--sky);
+}
+
+/* ---- Volume ---- */
+.music-player__volume-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--cream-light);
+  border: 4px solid var(--brown);
+  box-shadow: 0 4px 0 var(--brown);
+}
+
+.music-player__volume-blocks {
+  display: flex;
+  gap: 4px;
+}
+
+.music-player__volume-block {
+  width: 24px;
+  height: 26px;
+  border: 3px solid var(--brown);
+  background: #F3E3C3;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background 60ms, transform 60ms;
+}
+
+.music-player__volume-block:hover {
+  transform: translateY(-2px);
+}
+
+.music-player__volume-block:active {
+  transform: translateY(3px);
+}
+
+.music-player__volume-block.is-filled {
+  background: var(--pink);
+}
+
+.music-player__volume-slider {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.music-player__volume-value {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: var(--brown);
+  min-width: 48px;
+  text-align: right;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 719px) {
+  .music-player__now-playing {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .music-player__cover-wrap {
+    max-width: 160px;
+    margin: 0 auto;
+  }
+
+  .music-player__cover {
+    width: 160px;
+    height: 160px;
+  }
+
+  .music-player__placeholder {
+    width: 160px;
+    height: 160px;
+    font-size: 12px;
+  }
+
+  .music-player__equalizer {
+    margin: 0 auto;
+    max-width: 160px;
+  }
+
+  .music-player__play-pause {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .music-player__track-button {
+    grid-template-columns: 16px 1fr auto;
+  }
+
+  .music-player__volume-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .music-player__volume-blocks {
+    justify-content: center;
+  }
+
+  .music-player__volume-value {
+    text-align: center;
+  }
+}
+
+/* ---- Fix broken image for speaker icon ---- */
+.utility-buttons [data-sound-toggle] {
+  position: relative;
+  overflow: visible;
+}
+
+.utility-buttons [data-sound-toggle] img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.utility-buttons [data-sound-toggle] img[src=""],
+.utility-buttons [data-sound-toggle] img:not([src]) {
+  display: none;
+}
+
+.utility-buttons [data-sound-toggle][data-sound-state="off"]::after {
+  content: '';
+  position: absolute;
+  width: 135%;
+  height: 3px;
+  background: #e83f73;
+  transform: rotate(-45deg);
+  pointer-events: none;
+}
+
+/* Placeholder for settings icon if missing */
+.utility-buttons .pixel-icon-button[aria-label="Settings"] img[src=""],
+.utility-buttons .pixel-icon-button[aria-label="Settings"] img:not([src]) {
+  display: none;
+}
+
+.utility-buttons .pixel-icon-button[aria-label="Settings"]::before {
+  content: '⚙';
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+  color: var(--brown);
+}
+
+.utility-buttons .pixel-icon-button[aria-label="Settings"] img[src] + * {
+  display: none;
+}

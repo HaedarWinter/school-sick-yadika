@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE & OS
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+*.log
+
+# Build outputs
+dist/
+build/
+*.pyc
+*.egg-info/
+
+# Test artifacts
+coverage/
+.htmlcov/
+backend/tests/image.png

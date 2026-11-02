@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Sick In Yadika Soreang | Pixel-Art School Game</title>
+    <meta name="description" content="Pixel-art school arcade game by Haedar, set at SMK Yadika Soreang. Play as Hana, Haru, Hirara, Han, Havi, or Hikaru. Catch. Dodge. Score." />
+    <meta name="theme-color" content="#8ed9f0" />
+    <link rel="canonical" href="http://localhost:8000/" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/ui/apple-touch-icon.png" />
+    <meta property="og:title" content="School Sick In Yadika Soreang | Pixel-Art School Game" />
+    <meta property="og:description" content="Play as Hana, Haru, Hirara, Han, Havi, or Hikaru in a pixel-art browser game created for SMK Yadika Soreang. Catch. Dodge. Score." />
+    <meta property="og:image" content="http://localhost:8000/static/assets/school-sick-yadika-preview.webp" />
+    <meta property="og:image:width" content="1898" />
+    <meta property="og:image:height" content="906" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:alt" content="School Sick In Yadika Soreang pixel-art browser game featuring Hana, Haru, Hirara, Han, Havi, and Hikaru" />
+    <meta property="og:url" content="http://localhost:8000/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="School Sick In Yadika Soreang" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="School Sick In Yadika Soreang | Pixel-Art School Game" />
+    <meta name="twitter:description" content="Play as Hana, Haru, Hirara, Han, Havi, or Hikaru in a pixel-art browser game created for SMK Yadika Soreang. Catch. Dodge. Score." />
+    <meta name="twitter:image" content="http://localhost:8000/static/assets/school-sick-yadika-preview.webp" />
+    <meta name="twitter:image:alt" content="School Sick In Yadika Soreang pixel-art browser game featuring Hana, Haru, Hirara, Han, Havi, and Hikaru" />
+    <meta name="twitter:site" content="@haedarr" />
+    <meta name="twitter:creator" content="@haedarr" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/static/assets/ui/favicon.svg?v=2" />
+    <link rel="stylesheet" href="/game.css?v=player-intro-stack-1" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "School Sick In Yadika Soreang",
+        "url": "http://localhost:8000/",
+        "description": "Pixel-art school arcade game by Haedar, set at SMK Yadika Soreang. Play as Hana, Haru, Hirara, Han, Havi, or Hikaru. Catch. Dodge. Score.",
+        "genre": "Arcade game",
+        "applicationCategory": "Game",
+        "operatingSystem": "Web browser",
+        "author": {
+          "@type": "Person",
+          "name": "Haedar"
+        },
+        "image": "http://localhost:8000/static/assets/school-sick-yadika-preview.webp"
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="select-screen" class="screen active">
+        <div class="utility-buttons" id="landing-utilities"></div>
+        <main class="title-menu">
+          <h1 class="sr-only">School Sick In Yadika Soreang pixel-art browser game</h1>
+          <div class="logo-wrapper">
+            <img src="/static/assets/ui/logo-clear.svg" alt="School Sick In Yadika Soreang logo" draggable="false" />
+          </div>
+          <div class="tagline-wrapper">
+            <img src="/static/assets/ui/catch-treats.svg" alt="Catch all the treats!" draggable="false" />
+          </div>
+          <button id="start-button" class="play-button" type="button" aria-label="Play">
+            <img src="/static/assets/ui/play-button.svg" alt="Play" draggable="false" />
+          </button>
+          <div class="secondary-actions">
+            <button id="how-to-play-button" type="button" aria-label="How to Play">
+              <img src="/static/assets/ui/how-to-play-button.svg" alt="How to Play" draggable="false" />
+            </button>
+            <button id="high-score-button" type="button" aria-label="High Score">
+              <img src="/static/assets/ui/high-score-button.svg" alt="High Score" draggable="false" />
+            </button>
+          </div>
+          <footer>School Sick In Yadika Soreang <span>•</span> SMK Yadika Soreang<small>Developer Haedar — haedarr.my.id</small></footer>
+        </main>
+      </section>
+
+      <section id="player-screen" class="screen">
+        <button id="player-back-button" class="back-button" type="button">&lt; BACK</button>
+        <div class="section-heading">
+          <h2>PICK YOUR PAW-TNER!</h2>
+        </div>
+        <div class="character-grid">
+          <button class="character-card selected" data-character="akuntan_girl" type="button" aria-pressed="true">
+            <div class="portrait-frame"><canvas data-character-portrait="akuntan_girl" width="260" height="200"></canvas></div>
+            <div class="card-copy"><span class="card-kicker">AKUNTAN</span><strong>HANA</strong></div>
+            <span class="select-dot" aria-hidden="true"></span>
+          </button>
+          <button class="character-card" data-character="akuntan_boy" type="button" aria-pressed="false">
+            <div class="portrait-frame"><canvas data-character-portrait="akuntan_boy" width="260" height="200"></canvas></div>
+            <div class="card-copy"><span class="card-kicker">AKUNTAN</span><strong>HARU</strong></div>
+            <span class="select-dot" aria-hidden="true"></span>
+          </button>
+          <button class="character-card" data-character="perhotelan_girl" type="button" aria-pressed="false">
+            <div class="portrait-frame"><canvas data-character-portrait="perhotelan_girl" width="260" height="200"></canvas></div>
+            <div class="card-copy"><span class="card-kicker">PERHOTELAN</span><strong>HIRARA</strong></div>
+            <span class="select-dot" aria-hidden="true"></span>
+          </button>
+          <button class="character-card" data-character="perhotelan_boy" type="button" aria-pressed="false">
+            <div class="portrait-frame"><canvas data-character-portrait="perhotelan_boy" width="260" height="200"></canvas></div>
+            <div class="card-copy"><span class="card-kicker">PERHOTELAN</span><strong>HAN</strong></div>
+            <span class="select-dot" aria-hidden="true"></span>
+          </button>
+          <button class="character-card" data-character="pplg_girl" type="button" aria-pressed="false">
+            <div class="portrait-frame"><canvas data-character-portrait="pplg_girl" width="260" height="200"></canvas></div>
+            <div class="card-copy"><span class="card-kicker">PPLG</span><strong>HAVI</strong></div>
+            <span class="select-dot" aria-hidden="true"></span>
+          </button>
+          <button class="character-card" data-character="pplg_boy" type="button" aria-pressed="false">
+            <div class="portrait-frame"><canvas data-character-portrait="pplg_boy" width="260" height="200"></canvas></div>
+            <div class="card-copy"><span class="card-kicker">PPLG</span><strong>HIKARU</strong></div>
+            <span class="select-dot" aria-hidden="true"></span>
+          </button>
+        </div>
+        <button id="ready-button" class="primary-button" type="button">HOW TO PLAY</button>
+      </section>
+
+      <section id="game-screen" class="screen">
+        <div class="game-stage">
+          <div class="game-topbar"><div class="mini-brand"><span class="paw">✦</span> PAW CATCH</div><div id="lives" class="lives lives-hud" aria-label="Lives: 3"></div><div class="hud"><span>SCORE <b id="score">000</b></span><span>TIME <b id="time">00:00</b></span></div></div>
+          <button id="pause-button" class="pixel-icon-button hud-pause" type="button" aria-label="Pause game" title="Pause game"><span class="pause-icon" aria-hidden="true"><span></span><span></span></span></button>
+          <div class="canvas-wrap"><canvas id="game-canvas" width="960" height="720" aria-label="Paw Catch game"></canvas><div id="pawse-time-indicator" class="pawse-time-indicator hidden" aria-live="polite"><img src="/static/assets/ui/pawse-time.svg" alt="" draggable="false" /><span>5s</span></div><div id="countdown-overlay" class="countdown-overlay hidden"></div><div id="pause-note" class="pause-note hidden">PAUSED<br><small>Press P to resume</small></div></div>
+        </div>
+        <div class="mobile-arrow-controls" aria-label="Touch movement controls">
+          <button type="button" class="mobile-move-control" data-direction="left" aria-label="Move left"><img src="/static/assets/ui/left-arrow.svg" alt="" draggable="false" /></button>
+          <button type="button" class="mobile-move-control" data-direction="right" aria-label="Move right"><img src="/static/assets/ui/right-arrow.svg" alt="" draggable="false" /></button>
+        </div>
+        <p class="rotate-hint" role="note">ROTATE YOUR PHONE FOR<br />A BETTER EXPERIENCE</p>
+      </section>
+
+      <section id="over-screen" class="screen">
+        <div class="over-card">
+          <div class="over-header"><p class="eyebrow">GAME OVER</p><h2 id="over-title">NICE RUN!</h2></div>
+          <div class="results-content">
+            <div class="over-hero">
+              <canvas id="result-portrait" width="150" height="135"></canvas>
+              <div class="score-hero"><div class="final-score-label">FINAL SCORE</div><div id="final-score" class="final-score">000</div><div id="survival-time" class="survival-time">SURVIVED 00:00</div></div>
+            </div>
+            <div class="caught-heading">YOU CAUGHT</div>
+            <div id="caught-items" class="caught-items"></div>
+            <div id="hazards-hit" class="hazards-summary">Hazards hit: <strong>0</strong></div>
+            <div class="nickname-area">
+              <label class="name-label" for="nickname">NICKNAME</label>
+          <input id="nickname" maxlength="20" placeholder="Your name" autocomplete="off" />
+            </div>
+            <button id="submit-button" class="primary-button" type="button">SUBMIT SCORE</button>
+            <div id="submission-success" class="submission-success hidden" aria-live="polite">
+              <strong>SCORE SUBMITTED!</strong>
+              <span id="submitted-summary"></span>
+            </div>
+            <div id="submission-error" class="submission-error hidden" role="alert" aria-live="polite"></div>
+            <div class="over-actions"><button id="again-button" class="primary-button" type="button">PLAY AGAIN</button><button id="change-button" class="secondary-button" type="button">BACK TO HOME</button></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/game-data.js"></script>
+    <script src="/audio.js"></script>
+    <script src="/music-player.js"></script>
+    <script src="/game-ui.js"></script>
+    <script src="/game.js?v=keyboard-input-fix-1"></script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+/* I keep the compact stage overrides together so the original cascade stays readable. */
+#game-screen { isolation: isolate; background-image: none; }
+#game-screen::before { position: absolute; z-index: 0; inset: 0; content: ''; background: url('/static/assets/environment/environment.svg') center bottom / cover no-repeat; filter: brightness(0.82) saturate(0.84); }
+#game-screen.active { display: flex; align-items: center; justify-content: center; }
+@media (orientation: portrait) and (pointer: coarse) {
+  #game-screen.active .rotate-hint { display: block; }
+}
+@media (orientation: landscape) {
+  #game-screen.active .rotate-hint { display: none; }
+}
+@media (max-width: 700px) {
+  #game-screen.active .mobile-arrow-controls { display: flex; }
+
+  /* Keep a reliable touch target while making the pause artwork less dominant
+     on small gameplay stages. The button still uses the shared pixel control
+     component; only the inner bars are visually reduced. */
+  .game-stage .hud-pause {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    position: absolute;
+    display: grid;
+    place-items: center;
+  }
+
+  .game-stage .hud-pause::before {
+    content: '';
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border: 3px solid #42251f;
+    border-radius: 8px;
+    background: #fff2d5;
+    box-shadow: 0 4px 0 #42251f;
+  }
+
+  .game-stage .hud-pause .pause-icon {
+    position: relative;
+    z-index: 1;
+    transform: none;
+    transform-origin: center;
+  }
+
+  #game-screen .hud-pause:hover { box-shadow: none; }
+  #game-screen .hud-pause:active { box-shadow: none; }
+}
+@media (max-width: 700px) and (orientation: landscape) {
+  .game-stage { width: min(92vw, calc((100dvh - 64px) * 4 / 3), 960px); }
+  .mobile-arrow-controls { margin-top: 8px; }
+}
+.game-stage { position: relative; z-index: 1; container-type: inline-size; width: min(92vw, calc(92dvh * 4 / 3), 960px); aspect-ratio: 4 / 3; overflow: hidden; border: 2px solid #4f2d28; border-radius: 5px; background: #8ed9f0 url('/static/assets/environment/environment.svg') center bottom / cover no-repeat; box-shadow: 4px 4px 0 #e5a0b7, 0 0 18px rgba(255, 230, 180, 0.24); touch-action: inherit; }
+.game-stage,
+.mobile-arrow-controls { --mobile-stage-width: min(95dvw, calc(100dvw - 24px), calc((100dvh - 112px) * 4 / 3), 960px); }
+@media (max-width: 700px) and (orientation: portrait) {
+  .game-stage,
+  .mobile-arrow-controls { width: var(--mobile-stage-width); }
+  .mobile-arrow-controls { margin-top: 22px; }
+}
+@media (max-width: 700px) and (orientation: landscape) {
+  .game-stage,
+  .mobile-arrow-controls { width: min(92dvw, calc((100dvh - 64px) * 4 / 3), 960px); }
+  .mobile-arrow-controls { margin-top: 8px; }
+}
+.game-stage .game-topbar, .game-stage .canvas-wrap { position: absolute; inset: 0; }
+.game-stage .canvas-wrap { z-index: 1; }
+.game-stage .game-topbar { z-index: 4; visibility: visible; opacity: 1; }
+.game-stage .hud { top: clamp(24px, 3vh, 32px); right: clamp(40px, 4vw, 55px); }
+.game-stage .game-topbar > .lives-hud { top: clamp(24px, 3vh, 32px); left: clamp(40px, 4vw, 55px); z-index: 6; display: flex !important; visibility: visible; opacity: 1; pointer-events: none; }
+.game-stage .hud-pause { top: 50%; right: 10px; }
+.game-controls-hint, .mobile-controls { display: none !important; }
+.pixel-modal-backdrop { overflow: auto; }
+.back-button { position: absolute; top: 24px; left: clamp(18px, 5vw, 72px); z-index: 4; min-width: 104px; min-height: 42px; padding: 8px 12px; border: 3px solid #4f2d28; border-radius: 7px; background: #fff0d5; box-shadow: 0 4px 0 #c78ea7; color: #4f2d28; font: 9px 'Press Start 2P', monospace; text-transform: uppercase; }
+.back-button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #c78ea7; }
+.back-button:active { transform: translateY(2px); box-shadow: 0 2px 0 #c78ea7; }
+@media (max-width: 700px) { .back-button { top: max(12px, calc(env(safe-area-inset-top) + 12px)); left: 16px; min-height: 44px; } }
+@media (max-width: 700px) {
+  .pixel-modal-backdrop {
+    padding: max(16px, env(safe-area-inset-top))
+      max(26px, calc(16px + env(safe-area-inset-right)))
+      max(26px, calc(16px + env(safe-area-inset-bottom)))
+      max(16px, env(safe-area-inset-left));
+  }
+
+  .pixel-modal-backdrop .pixel-modal,
+  .high-score-modal .pixel-modal,
+  .pause-menu-modal .pixel-modal,
+  .how-to-play-modal .pixel-modal,
+  .idle-menu-modal .pixel-modal {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 700px) {
+  #player-screen { padding-top: max(76px, calc(env(safe-area-inset-top) + 72px)); }
+}
+.high-score-modal .leaderboard-best { display: grid; justify-items: center; gap: 8px; padding: 2px 0 8px; color: #a47778; font: 9px 'Press Start 2P', monospace; }
+.high-score-modal .best-score-value { color: #e83f73; font: clamp(30px, 6vw, 46px) 'Press Start 2P', monospace; line-height: 1; text-shadow: 3px 3px 0 #fff0b8; }
+.idle-menu-modal .pixel-modal { width: min(420px, calc(100vw - 32px)); max-height: none; }
+.idle-menu-modal .pixel-modal__content { display: grid; justify-items: center; gap: 12px; padding: 20px 24px 24px; text-align: center; }
+.idle-menu-modal .pixel-modal__content p { margin: 0 0 4px; color: #4f2d28; font-size: 12px; line-height: 1.5; }
+.idle-menu__button { width: min(280px, 100%); min-height: 48px; font: 10px 'Press Start 2P', monospace; text-transform: uppercase; }

@@ -1,0 +1,17 @@
+{
+  "name": "School Sick In Yadika Soreang | Haedar",
+  "short_name": "School Sick In Yadika Soreang",
+  "description": "A pixel-art browser game created by Haedar. Catch. Dodge. Score.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#8ed9f0",
+  "theme_color": "#8ed9f0",
+  "icons": [
+    {
+      "src": "/static/assets/ui/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
